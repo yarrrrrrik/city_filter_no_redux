@@ -1,0 +1,86 @@
+body{
+}
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: bold;
+}
+.container{
+  width: 800px;
+  height: 400px;
+  margin: 150px auto;
+  box-sizing:border-box;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.filter-form{
+  width: 50%;
+  text-align: center;
+  form{
+    margin-top: 5%;
+    margin-bottom: 15px;
+  }
+}
+
+.searchInput{
+  width: 60%;
+  height: 28px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+  &:focus{
+    outline: none;
+    border-bottom: 1px solid #347CFF;
+
+  }
+}
+
+.filter-form__list{
+  margin: 0 auto;
+  width: 60%;
+}
+
+.list-item{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  height: 30px;
+}
+
+.btn{
+  border: none;
+  border-radius: none;
+  color: rgb(66, 66, 66);
+  cursor: pointer;
+}
+.delete-btn{
+  background: rgb(255, 180, 180);
+  &:hover{
+    background: rgb(252, 97, 97);
+  }
+}
+.add-btn{
+  background: rgb(175, 255, 177);
+  &:hover{
+    background: rgb(101, 255, 105);
+  }
+}
+
+/////////////// selectedCities
+
+.selected-cities{
+  width: 50%;
+  text-align: center;
+}
+
+.selected-cities__list{
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 60%;
+}
