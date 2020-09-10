@@ -1,18 +1,15 @@
-import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {removeSelectedCityAction} from '../redux/selected-cities/selected_cities_actions'
+import React, {useContext} from 'react'
+import {Context} from '../context'
 
-
-function SelectedCities() {
-  const selectSelectedCities = useSelector(state => (state.selectedCities.selectedCitiesArray))
-  const dispatch = useDispatch()
+function SelectedCities(props) {
+  const {removeSelectedCityAction} = useContext(Context)
   return (
     <div className="selected-cities" >
       <h2 className="title">Selected cities</h2>
       <ul className="selected-cities__list">
         {
-          selectSelectedCities.map((city, i) => {
-            return <li className="list-item" key={i}> {city} <button className="btn delete-btn" onClick={ () => dispatch(removeSelectedCityAction(i)) }>X</button> </li>
+          props.selectedCities.map((city, i) => {
+            return <li className="list-item" key={i}> {city} <button className="btn delete-btn" onClick={() => removeSelectedCityAction(i)}>X</button> </li>
           })
         }
       </ul>

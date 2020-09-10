@@ -1,22 +1,19 @@
-import React, {useEffect} from 'react'
-import {useSelector, useDispatch, useStore} from 'react-redux'
+import React, {useContext} from 'react'
+import {Context} from '../context'
 
-import {getCityListAction, removeCityListAction} from '../redux/filter-form/filter_form_actions'
-import {selectCityAction} from '../redux/selected-cities/selected_cities_actions'
+function FilterForm(props) {
 
-function FilterForm() {
-  const store = useStore()
-  const dispatch = useDispatch()
-  const selectCityList = useSelector(state => state.filterForm.cityList)
+  const {getCityListAction, removeCityListAction, selectCityAction} = useContext(Context)
+
 
   let inputValue = ''
-  
+
   function get(e) {
     inputValue = e.target.value
     if (inputValue.length > 2) {
-      dispatch(getCityListAction(inputValue))
+      getCityListAction(inputValue)
     }else{
-      dispatch(removeCityListAction())
+      removeCityListAction()
     }
   }
 
@@ -28,10 +25,10 @@ function FilterForm() {
       </form>
       <ul className="filter-form__list">
         {
-          selectCityList.map((city, i) => {
+          props.cityList.map((city, i) => {
             return <li className="list-item" key={i}> {city} <button className="btn add-btn"  onClick={() => {
-                dispatch(selectCityAction(city))
-                dispatch(removeCityListAction())
+                removeCityListAction()
+                selectCityAction(city)
                 document.querySelector('.searchInput').value = ''
               }}>+</button> </li>
           })
@@ -42,3 +39,5 @@ function FilterForm() {
 }
 
 export default FilterForm
+
+// dispatch(selectCityAction(city))
